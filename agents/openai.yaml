@@ -1,4 +1,4 @@
 interface:
   display_name: "GitHub Delivery Workflow"
-  short_description: "Manage documented GitHub changes and PRs"
-  default_prompt: "Use the Perez Workflow for this repository change: keep related work in one branch and PR, create normal ready-for-review PRs, add critical and senior-engineering review comments, rebase when needed, and verify green checks before calling it ready."
+  short_description: "Organize branches, commits, PR reviews, rebases, and green checks"
+  default_prompt: "Use $github-delivery-workflow to keep related changes in one branch and PR, create a normal ready-for-review pull request, document the work, add critical and senior-engineering review comments, rebase when needed, and verify all checks are green."
