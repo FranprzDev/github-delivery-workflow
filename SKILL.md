@@ -15,7 +15,19 @@ Maintain every project through small, traceable GitHub changes. Keep related wor
 - Do not merge a PR unless the user explicitly requests the merge.
 - Keep all related changes in the same PR when practical. Each additional requested change after the PR exists becomes a new commit on the same branch and PR, unless it is unrelated or the user requests another PR.
 - Use concise, descriptive Spanish or project-appropriate titles and descriptions. The PR description must state what changed, why, impact, and validation.
+- Every PR must always show a clean merge status on GitHub: no conflicts, no rebase problems, green checks. Whenever the base branch moves, rebase, rerun checks, push with `--force-with-lease`, and confirm via the API that the PR is mergeable before handing off.
 - Never silently stage unrelated work. Inspect `git status --short --branch` and the diff before staging.
+
+## Code conventions from my reviews
+
+Before writing code, apply the conventions my PR reviews keep asking for (full list in `config-ai-bots/CODE_REVIEW_LESSONS.md`):
+
+- Finite domain values are enums or shared contract types, never inline string literals; type LangGraph nodes and edges with enums.
+- No `any`; extract repeated inline types into named types.
+- `async/await` over `.then()` chains; validate only what is needed; plain loops over clever reducers.
+- Optional chaining only for valid no-ops; use storage/service abstractions instead of direct `fs`; no hidden config fallbacks; delete dead code.
+- One concern per PR (no style migrations mixed with features); only the repo's package manager; no helper scripts for mechanical edits.
+- When fixing review comments, one commit naming each resolved comment, and add the lesson to the repo's `AGENTS.md`.
 
 ## Local change workflow
 
